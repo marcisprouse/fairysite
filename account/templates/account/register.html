@@ -1,0 +1,78 @@
+{% extends "base_nav.html" %}
+{% load static %}
+{% block title %}Register: Webfairy Design{% endblock %}
+
+{% block content %}
+
+
+    <!--  class: image, round, hfixedlg, hfixedmd, hfixedsm  -->
+    <!--  Page Header  -->
+    <div class="page-header--image" data-overlay>
+        <div class="imagebg" style="background-image: url({% static 'account/img/user_registration@2x.jpg' %});"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="sectiontitle-element--center--light">
+                        <h1 class="big">Create an Account</h1>
+                        <p>Join our Webfairy community here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  END Page Header  -->
+        <div class="page-content">
+            <!--  Page Content  -->
+            <section data-padding>
+                <div class="container">
+                    <div class="row align-items-lg-top">
+
+                        <div data-aos="fade" class="col-12 col-lg-6 col-xl-5">
+                            <div class="square-element">
+                                <div class="info">
+                                    <div class="image" style="margin-bottom:60px;">
+                                        <img src="{% static 'account/img/fairy_door2.jpg' %}">
+                                    </div>
+                                </div> <!-- end info -->
+                            </div> <!-- end square-element -->
+                            <div class="square-element">
+                                <div class="info">
+                                        <div class="image">
+                                            <img src="{% static 'blog/img/magic_stars_300w.png' %}">
+                                        </div>
+                                </div> <!-- end info -->
+                            </div> <!-- end square element -->
+                        </div> <!-- end data-aos="fade... -->
+                        <!--  Column Two Area  -->
+                        <div data-aos="fade" data-aos-delay="200" class="col-12 col-lg-6 col-xl-5 offset-xl-2" style="vertical-align:top;">
+                            <img src="{% static 'pages/img/Logo.png' %}"><br><br>
+                            <div class="info">
+                                <div class="text">
+                                  <h3>Create an account</h3>
+                                  <p>Please sign up using the following form:</p>
+                                    <div class="basic-form--border--round--row" style="margin-top:30px;">
+                                      <form method="post" style="font-size:small;">
+                                        {% for field in user_form %}
+                                            <div class="fieldWrapper">
+                                                {{ field.errors }}
+                                                {{ field.label_tag }} {{ field }}
+                                                {% if field.help_text %}
+                                                    <p class="help" style="font-size:small;">{{ field.help_text|safe }}</p>
+                                                {% endif %}
+                                            </div>
+                                            <br><br>
+                                        {% endfor %}
+                                        {% csrf_token %}
+                                        <p><input type="submit" value="Create my account"></p>
+                                      </form>
+                                    </div> <!-- end basic form -->
+                                </div> <!-- end text -->
+                            </div> <!-- end info -->
+                        </div> <!-- end data-aos="fade" data-aos.. -->
+                    </div> <!-- end row -->
+                </div> <!-- end container -->
+            </section>
+        </div> <!-- end page content -->
+        <!--  END Page Content  -->
+
+{% endblock %}

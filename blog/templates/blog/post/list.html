@@ -1,0 +1,122 @@
+{% extends "base_nav.html" %}
+{% load static %}
+{% load blog_tags %}
+{% block title %}Blog by Webfairy Design{% endblock %}
+
+{% block content %}
+
+    <!--  Page Header  -->
+    <!--  class: image, round, hfixedlg, hfixedmd, hfixedsm  -->
+    <div class="page-header--image" data-overlay>
+        <div class="imagebg" style="background-image: url({% static 'blog/img/pageheader-blog@2x.jpg' %});"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="sectiontitle-element--light--center">
+                        <h1>Webfairy Blog</h1>
+                        <p>Get to know us better through the blogosphere.<br>
+                        Webfairy has written {% total_posts %} posts so far.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  END Page Header  -->
+
+            <!--  Page Content  -->
+    <div class="page-content" data-padding="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-8 col-lg-9">
+                    <section data-padding="bottom">
+                        <!--  Single Article  -->
+                        {% if tag %}
+                        <h2>Posts tagged with "{{ tag.name }}"</h2>
+                        {% endif %}
+                        {% for post in posts %}
+                        <article class="rectangle-element--article--inline--boxed--shadow" data-padding>
+                            <div class="info">
+                                <div class="image">
+
+                                    <img data-unveil src="#" data-src="{% get_media_prefix %}{{ post.blog_img }}" data-src-retina="{% get_media_prefix %}{{ post.blog_img_larger }}" alt="{{ post.title }}">
+
+                                </div>
+                                <div class="text">
+                                    <div class="meta">
+                                        <div class="tags">
+                                            <time class="e-date" datetime={{ post.publish }}>{{ post.author.first_name }}&nbsp{{ post.author.last_name }}</time>
+                                            <ul class="categories">
+                                                <li><a href="#">{{ post.category }}</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <h6>{{ post.title }}</h6>
+                                    <!-- <p class="tags">Tags: {{ post.tags.all|join:", " }}</p> -->
+                                    <small>Tags: {{ post.tags.all|join:", " }}</small>
+                                    <p>{{ post.body|markdown|truncatewords_html:10 }}</p>
+                                </div>
+                            </div>
+                            <a href="{{ post.get_absolute_url }}" class="link"></a>
+                            {% endfor %}
+                        </article>
+                        <!--  END Single Article  -->
+                    </section>
+                </div> <!-- end col-12 -->
+
+                <!-- Sidebar -->
+                <div class="col-12 col-md-4 col-lg-3" data-hidden="md">
+                    <aside data-padding="coltop">
+                        <div class="widget-wrapper" data-padding="xsbottom">
+                            <a href="{% url "blog:post_search" %}" class="btn--big--colortwo--round">Search</a>
+                        </div>
+                        <div class="widget-wrapper" data-padding="xsbottom">
+                            <a href="{% url 'blog:post_feed' %}">RSS Feed <i class="fa fa-rss-square"></i></a>
+                        </div>
+
+                        {% show_latest_posts 3 %}
+
+                        <div class="widget-wrapper" data-padding="xsbottom">
+                            {% get_most_commented_posts as most_commented_posts %}
+                            <h5>Most Commented</h5>
+
+                            <div class="icon-element--round--left--article--colorone" data-padding>
+                                <div class="info">
+                                    <div class="text">
+                                        <div class="meta">
+                                            <div class="tags">
+                                                {% for post in most_commented_posts %}
+                                                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a><br><br>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-wrapper">
+                            <h5>Tags</h5>
+                            <div class="tags-element--round--border--colorone" data-padding>
+                                <ul>
+                                    {% for t in all_tags %}
+                                    <li>
+                                        <a style="font-size:x-small;" href="{% url "blog:post_list_by_tag" t.slug %}">
+                                            {{ t.name }}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+                <!-- END Sidebar -->
+            </div> <!-- end class row -->
+        </div> <!-- end container -->
+
+    {% include "pagination.html" with page=posts %}
+    </div>
+    <!--  END Page Content  -->
+
+{% endblock %}
+
+

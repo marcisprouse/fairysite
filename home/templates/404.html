@@ -1,0 +1,27 @@
+{% extends "base_nav.html" %}
+{% load static %}
+{% block title %}Page Not Found{% endblock %}
+
+{% block content %}
+
+
+    <!--  class: image, round, hfixedlg, hfixedmd, hfixedsm  -->
+    <!--  Page Header  -->
+    <div class="page-header--image" data-overlay>
+        <div class="imagebg" style="background-image: url({% static 'pages/img/pageheader-404.jpg' %});"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="sectiontitle-element--center--light">
+                        <h1 class="big">Page Not Found</h1>
+                        <p>Oops. That page doesn’t exist.</p>
+                        <a href="{% url 'pages:home' %}" class="btn--big--round--primary">Return Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  END Page Header  -->
+
+
+{% endblock %}

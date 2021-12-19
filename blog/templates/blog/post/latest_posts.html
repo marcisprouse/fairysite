@@ -1,0 +1,31 @@
+{% load blog_tags %}
+<div class="widget-wrapper" data-padding="xsbottom">
+    <h5>Recent Posts</h5>
+    {% for post in latest_posts %}
+    <div class="icon-element--round--left--article--colorone" data-padding>
+        <div class="info">
+            <div class="text">
+                <div class="meta">
+                    <div class="tags">
+                        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a><br>
+                        {{ post.category }}
+                    </div>
+                </div>
+                <h6>{{ post.body|markdown|truncatewords_html:10 }}</h6>
+                <p class="tags">
+                Tags:
+                    {% for tag in post.tags.all %}
+                        <a href="{% url "blog:post_list_by_tag" tag.slug %}">
+                            {{ tag.name }}
+                        </a>
+                        {% if not forloop.last %}| {% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+        <!-- <a href="{{ post.get_absolute_url }}" class="link"></a> -->
+        ______
+    </div>
+    {% endfor %}
+
+</div>

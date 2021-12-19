@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block title %}{% endblock %}</title>
+
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="theme-color" content="#000" />
+
+    <meta name="description" content="Magical Sites by Webfairy Design, specializing in the Django Web Framework. Sites built by Webfairy Design are secure with the power of a database backend, allowing for unique user experiences and features." />
+    <meta name="author" content="Marci Sprouse https://www.marcisprouse.com" />
+
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- main css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'pages/css/bootstrap/bootstrap-grid.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'pages/css/bootstrap/bootstrap-reboot.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'pages/css/style.css' %}">
+    {% block head %} {% endblock %}
+</head>
+<body>
+    <!--  Main Wrap  -->
+    <div id="main-wrap">
+        {% block navbar %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+    </div><!--  end Main Wrap  -->
+
+    {% block footer %}
+    <!--  Footer  -->
+    <footer id="footer" data-aos="fade">
+        <div class="container">
+            <div class="row main-wrapper">
+                <div class="col-12 col-md-4">
+                    <div class="logo-footer">
+                        <!-- -small, -medium, -big -->
+                        <div class="image--small">
+                            <img data-unveil src="#" data-src="{% static 'pages/img/Logo@2x.png' %}" alt="Webfairy Logo">
+                        </div>
+                        <h6>Greater Phoenix Area, United States</h6>
+                        <p>Although based in Phoenix, the Webfairy easily works for any customer in any location.  If you are a customer in Phoenix, setting up a meeting in person is a great way to get started!</p>
+                        <div class="list-element--text--separator">
+                            <ul>
+                                <li>Owner and Designer, Marci Sprouse</li>
+                                <li><a href="mailto:marci@webfairydesign.com">marci@webfairydesign.com</a></li>
+                                <!-- <li><a href="mailto:marci@webfairydesign.com"></a></li> -->
+                            </ul>
+                        </div>
+                        <div class="social-element--round--border--small">
+                            <ul>
+                                <li><a href="https://www.linkedin.com/in/marcisprouse/"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="https://www.marcisprouse.com"><i class="fas fa-globe"></i></a></li>
+                                <li><a href="mailto:marci@webfairydesign.com"><i class="far fa-envelope"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-6 col-md-6">
+                            <div class="list-element--text">
+                                <h6 style='margin-left:40px;'>Menu</h6>
+                                <ul>
+                                    <li><a href="{% url 'pages:home' %}">Home</a></li>
+                                    <li><a href="{% url 'pages:about' %}">About</a></li>
+                                    <!-- <li><a href="#">Portfolio</a></li> -->
+                                    <li><a href="{% url 'contact_form:contact' %}">Contact</a></li>
+                                    <li><a href="https://www.webfairydesign.com/sitemap.xml">XML Site Map</a></li>
+                                </ul>
+                            </div>
+                        </div> <!-- end col-6 -->
+                        <div class="col-6 col-md-6">
+                            <div class="list-element--text" style="margin-bottom:50px;">
+                                <h6 style='margin-left:40px;'>Blog</h6>
+                                <ul>
+                                    <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
+                                    <li><a href="{% url 'blog:post_search' %}">Blog Search</a></li>
+                                    <li><a href="{% url 'blog:post_feed' %}">RSS Feed <i class="fa fa-rss-square"></i></a></li>
+                                </ul>
+                            </div>
+                            {% if request.user.is_authenticated %}
+                                <div class="list-element--text">
+                                    <h6 style='margin-left:40px;'>{{ user.first_name }}'s<br>Links</h6>
+                                    <ul>
+                                        <li><a href="{% url 'dashboard' %}">My Dashboard</a></li>
+                                        <li><a href="{% url 'password_change' %}">Change Password</a></li>
+                                        <li><a href="{% url 'edit' %}">Update Profile</a></li>
+                                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    </ul>
+                                </div>
+                            {% else %}
+                                <div class="list-element--text">
+                                    <h6 style='margin-left:40px;'>User Account</h6>
+                                    <ul>
+                                        <li><a href="{% url 'login' %}">Login</a></li>
+                                        <li><a href="{% url 'register' %}">Create Account</a></li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div> <!-- end col-6 -->
+
+                    </div><!-- end row -->
+                </div> <!-- end col-12 -->
+                <div class="col-12 col-md-4">
+                    <div class="info-footer">
+                        <div class="image">
+                            <img data-unveil src="#" data-src="{% static 'pages/img/customer.jpg' %}" data-src-retina="{% static 'pages/img/customer@2x.jpg' %}" alt="Customer Satisfaction">
+                        </div>
+                        <h6>You can count on the Webfairy</h6>
+                        <p>Customer service is our priority.  You will not be disappointed with our service or work, guaranteed.</p>
+                    </div>
+                </div>
+            </div><!-- end row main wrapper -->
+        </div><!-- end container -->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p>©2021 <a href="https://www.webfairydesign.com/" class="simple">Webfairy Design</a> by <a href="https://www.marcisprouse.com/" class="simple">Marci Sprouse</a>&nbsp&nbsp
+                        <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangosite100x25.gif" border="0" alt="A Django site." title="A Django site." /></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--  END Footer  -->
+    {% endblock %}
+
+
+    <!-- js -->
+    <script type="text/javascript" src="{% static 'pages/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/jquery.unveil.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/aos.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/swiper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/jquery.magnific-popup.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/isotope.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/imagesloaded.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/carousel.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/menu.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/elements.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/masonry.js' %}"></script>
+    <script type="text/javascript" src="{% static 'pages/js/form.js' %}"></script>
+
+</body>
+</html>
+

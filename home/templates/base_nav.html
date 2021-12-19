@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block navbar %}
+{% load app_tags %}
+{% load static %}
+      <!-- ========== Navigation ========== -->
+
+        <header id="header" class="transparent--fixed">
+            <!--  padding-sm, padding-md, padding-lg  -->
+            <div class="wrap-header--padding-lg">
+                <nav class="main-navigation">
+                    <!--  Header Logo  -->
+                    <!--  class: height-sm, height-md, height-lg  -->
+                    <div id="logo" class="height-lg">
+                        <a class="navbar-brand" href="/">
+                            <picture class="light">
+                                <source srcset="/static/pages/img/Logo_white@2x.png 2x, /static/pages/img/Logo_white.png 1x" type="image/png">
+                                <img src="{% static 'pages/img/Logo_white.png' %}" alt="Webfairy Design by Marci Sprouse">
+                            </picture>
+                            <picture class="colored">
+                                <source srcset="/static/pages/img/Logo@2x.png 2x, /static/pages/img/Logo.png 1x" type="image/png" />
+                                <img src="{% static 'pages/img/Logo.png' %}" alt="Webfairy Design by Marci Sprouse">
+                            </picture>
+                        </a>
+                    </div>
+                    <!--  END Header Logo  -->
+                    <!--  Menu  -->
+                    <div id="main-menu" aria-expanded="false" role="navigation">
+                        <div class="menu-holder" data-hidden="lg">
+                            <ul>
+                                <!--  class: shadow, round, icon, bgitems  -->
+                                <li>
+                                    <a href="{% url 'pages:home' %}">Home</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'pages:about' %}">About</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'blog:post_list' %}">Blog</a>
+                                </li>
+                                <li>
+                                    <!-- <a href="#">Portfolio</a> -->
+                                </li>
+
+                                {% if user.is_authenticated %}
+
+                                    <li class="dropdown-parent--shadow--round--icon--bgitems">
+                                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                            Hello{% if user.first_name %}&nbsp;{{ user.first_name }}!&nbsp;{% else %}!&nbsp;{% endif %}
+                                            My Account
+                                        </a>
+                                        <div class="dropdown-inner">
+                                        <ul>
+                                            <li><a href="{% url 'dashboard' %}">My Dashboard</a></li>
+                                            <li><a href="{% url 'password_change' %}">Change Password</a></li>
+                                            <li><a href="{% url 'edit' %}">Update Profile</a></li>
+                                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                                        </ul>
+                                        </div>
+                                    </li>
+                                {% else %}
+                                <li><a href="{% url 'login' %}">Login</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="cta">
+                            <a href="{% url 'contact_form:contact' %}" class="btn--medium--round--border">contact us</a>
+                        </div>
+                        <div class="menu-button" data-visible="lg">
+                            <div class="icons">
+                                <span class="bar bar-1"></span>
+                                <span class="bar bar-2"></span>
+                                <span class="bar bar-3"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mobile-menu" data-visible="lg" aria-expanded="false" role="navigation">
+                        <!-- class: -bg -->
+                        <div class="mobile-wrap">
+                            <!-- class: -dotted, -border -->
+                            <div class="main-links--border col-12">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'pages:home' %}">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'pages:about' %}">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'blog:post_list' %}">Blog</a>
+                                    </li>
+                                    <li>
+                                        <!-- <a href="#">Portfolio</a> -->
+                                    </li>
+
+                                    {% if request.user.is_authenticated %}
+
+                                        <li class="dropdown-parent--icon" aria-expanded="false">
+                                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                                Hello{% if user.first_name %}&nbsp;{{ user.first_name }}!&nbsp;{% else %}!&nbsp;{% endif %}
+                                                My Account
+                                            </a>
+                                            <div class="dropdown-inner">
+                                                <ul>
+                                                    <li><a href="{% url 'dashboard' %}">My Dashboard</a></li>
+                                                    <li><a href="{% url 'password_change' %}">Change Password</a></li>
+                                                    <li><a href="{% url 'edit' %}">Update Profile</a></li>
+                                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    {% else %}
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  END Menu  -->
+                </nav>
+            </div>
+        </header>
+        <!--  END Header & Menu  -->
+
+
+{% endblock %}

@@ -1,0 +1,264 @@
+{% extends "base_nav.html" %}
+{% load static %}
+{% load blog_tags %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+
+    <!--  Page Header  -->
+    <!--  class: image, round, hfixedlg, hfixedmd, hfixedsm  -->
+    <div class="page-header--image" data-overlay>
+        <div class="imagebg" style="background:{{ palette|first }};"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="sectiontitle-element--light--center col-12">
+                        <span class="toptitle--light">Published {{ post.publish }} by {{ post.author.first_name }}&nbsp{{ post.author.last_name }}<br><br>
+                        <a href="{% url 'blog:post_share' post.id %}"><i style="color:white;" class="far fa-envelope"></i></a>&nbsp<a style="color:white;" href="{% url 'blog:post_share' post.id %}">Share</a></span>
+                        <h3>{{ post.title }}</h3>
+                    </div>
+                    <div class="list-element--text--breadcrumbs--arrow--light--center">
+                        <ul>
+                            <li><a href="{% url 'pages:home' %}">Home</a></li>
+                            <li>Blog</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  END Page Header  -->
+
+    <!--  Page Content  -->
+    <div class="page-content">
+        <!--  Text  -->
+        <section data-padding>
+            <div class="container">
+                <div data-aos="fade-up" class="row">
+                    <div class="col-12 col-lg-8 offset-lg-2">
+                        <div class="sectiontitle-element--full">
+                            <h2>{{ post.abstract_title }}</h2>
+                            <p>{{ post.abstract|markdown }}</p>
+                        </div>
+                        <h3 class="margin" data-padding="smtop">{{ post.subheading_one }}</h3>
+                        <p>{{ post.body|markdown }}
+                        <div data-padding="xstop"></div>
+                        <blockquote class="blockquote-element--primary" data-margin>
+                            <em>{{ post.quote }}</em>
+                            <span class="author">{{ post.quote_author }}</span>
+                        </blockquote>
+                        <p data-padding="xstop">{{ post.img_caption_long }}</p>
+                        <div data-padding="xstop"></div>
+                        <div data-aos="zoom-in" class="rectangle-element--overlay--center">
+                            <div class="info">
+                                <div class="image">
+                                    <img data-unveil src="#" data-src="{% get_media_prefix %}{{ post.blog_img }}" data-src-retina="{% get_media_prefix %}{{ post.blog_img_larger }}" alt="{{ post.title }}">
+                                </div>
+                                <div class="text">
+                                    <p>{{ post.img_caption_short }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-padding="xstop"></div>
+                        <p>{{ post.body_b|markdown }}</p>
+                            {% if post.code %}
+                            <pre class="code-element">
+                                <code>{{ post.code|markdown }}</code>
+                            </pre>
+                            {% endif %}
+                        <p>{{ post.body_c|markdown }}</p>
+                        <div data-padding="xstop"></div>
+                        <h4 class="margin">{{ post.subheading_two }}</h4>
+                        <p>{{ post.body_two|markdown }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--  END Text  -->
+        <!--  Share Section  -->
+        <section data-padding="xsbottom">
+            <div class="container">
+                <div data-aos="fade" class="row">
+                    <div class="col-12 col-lg-8 offset-lg-2">
+                        <div class="social-element--round--primary">
+                            <div class="title">
+                                <h5>Share:</h5>
+                            </div>
+                            <ul>
+                                <li><a href="{% url 'blog:post_share' post.id %}"><i class="far fa-envelope"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--  END Share Section  -->
+        <!--  Tags Section  -->
+        <section data-padding="smbottom">
+            <div class="container">
+                <div data-aos="fade" class="row">
+                    <div class="col-12 col-lg-8 offset-lg-2">
+                        <div>
+                            <div class="col-12" data-padding="sm">
+                                <div class="separator-element"></div>
+                            </div>
+                            <div class="title">
+                                <h5>Tags for <em>{{ post.title }}</em>:</h5>
+                            </div>
+                            <div class="tags-element--round--border--colorone" data-padding>
+                                <ul>{% for tag in post.tags.all %}
+                                        <li><a href="{% url 'blog:post_list_by_tag' tag.slug %}">
+                                                {{ tag.name }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div data-aos="fade" class="row">
+                    <div class="col-12 col-lg-8 offset-lg-2">
+                        <div class="icon-element--round--left--author--wrapper">
+                            <div class="info">
+                                <div class="image">
+                                    <img data-unveil src="#" data-src="{% get_media_prefix %}{{ post.author_pic }}" data-src-retina="{% get_media_prefix %}{{ post.author_pic }}" alt="{{ post.author.first_name }}&nbsp{{ post.author.last_name }}">
+                                </div>
+                                <div class="text">
+                                    <h6>{{ post.author.first_name }}&nbsp{{ post.author.last_name }}</h6>
+                                    <p>{{ post.author.profile.bio|markdown }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+        <!--  END Tags Section  -->
+
+        <!-- this is where Comments and Form section goes -->
+
+        <!-- ******** -->
+
+                    <!--  Comments  -->
+            <section data-padding="bottom">
+                <div class="container">
+                    <div data-aos="fade" class="row" data-padding="xsbottom">
+                        <div class="col-12 col-lg-8 offset-lg-2">
+                            <div class="sectiontitle-elemement">
+                                <h2>Comments</h2>
+                                {% with comments.count as total_comments %}
+                                    <p>{{ total_comments }} comment{{ total_comments|pluralize }}</p>
+                                {% endwith %}
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade" class="row">
+                        <div class="col-12 col-lg-8 offset-lg-2">
+                            {% for comment in comments %}
+                                <ul class="articlecomments-element" style="line-height:180%">
+                                    <li>
+                                        <div class="icon-element--round--left--author--comment">
+                                            <div class="info">
+                                                <div class="image">
+                                                    <img data-unveil src="#" data-src="{% static 'blog/img/avatar.jpg' %}" data-src-retina="{% static 'blog/img/avatar@2x.jpg' %}" alt="">
+                                                </div>
+                                                <div class="text">
+                                                    <h6>Comment {{ forloop.counter }} by {{ comment.name }}</h6>
+                                                    <span>{{ comment.created }}</span>
+                                                </div>
+                                                <div class="des">
+                                                    <p>{{ comment.body|markdown }}</p>
+                                                </div>
+                                            </div> <!-- end info -->
+                                        </div> <!-- end icon element round left author comment -->
+                                    </li><br><br>
+                                </ul> <!-- end articlecomments-element -->
+                            {% empty %}
+                                <p>There are no comments yet.</p>
+                            {% endfor %}
+                            {% if new_comment %}
+                                <h6>Your comment has been submitted for review.<br>Please come back soon to see your post.</h6>
+                                <div class="wrapper">
+                                    <a href="{% url 'blog:post_list' %}" class="btn--big--icon--round--colortwo--alt"><span>Return to Blog</span><i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            {% else %}
+                                <h4>Add a new comment</h4>
+                                    <form method="post">
+                                        <div class="basic-form--border--round--row">
+                                            {% for field in comment_form %}
+                                                <div class="field col-lg-12" style="margin-bottom:20px;">
+                                                    {{ field.errors }}
+                                                    {{ field.label_tag }} {{ field }}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                            {% csrf_token %}
+                                        <input type="submit" value="Add Comment">
+                                    </form>
+                            {% endif %}
+
+                        </div> <!-- end col-12 col-lg-8.. -->
+                    </div> <!-- end fade row -->
+                </div> <!-- end container -->
+            </section>
+
+
+
+        <!-- ******** -->
+
+
+
+        <!--  3 Articles listed here -->
+        <section data-padding data-bg="grey">
+            <div class="container">
+                <div data-aos="fade" class="row">
+                    <div class="col-12">
+                        <div class="sectiontitle-element--center">
+                            <h2>Similar Posts</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" data-padding="xstop">
+                    {% for p in similar_posts %}
+                    <!--  Single Article  -->
+                    <div data-aos="fade" data-aos-delay="100" class="col-12 col-md-4">
+                        <article class="rectangle-element--article--boxed--shadow">
+                            <div class="info">
+                                <div class="image">
+                                    <img data-unveil src="#" data-src="{% get_media_prefix %}{{ p.blog_img }}" data-src-retina="{% get_media_prefix %}{{ p.blog_img_larger }}" alt="{{ p.title }}">
+                                </div>
+                                <div class="text">
+                                    <div class="meta--image">
+                                        <div class="author--round">
+                                            <img data-unveil src="#" data-src="{% get_media_prefix %}{{ p.author_pic }}" data-src-retina="{% get_media_prefix %}{{ p.author_pic }}" alt="{{ p.author.first_name }}">
+                                        </div>
+                                        <div class="tags">
+                                            {{ p.author.first_name }}&nbsp{{ p.author.last_name }}
+                                            <br>
+                                            {{ p.category }}
+                                        </div>
+                                    </div>
+                                    <h3>{{ p.title }}</h3>
+                                    <p>{{ p.body|markdown|truncatewords_html:10 }}</p>
+                                </div> <!-- end text -->
+                            </div> <!-- end info -->
+                            <a href="{{ p.get_absolute_url }}" class="link"></a>
+                        </article>
+                        {% empty %}
+                        <p>There are no similar posts yet.</p>
+                    </div><!-- end col 12 fade -->
+                    {% endfor %}
+                </div> <!-- end xstop -->
+            </div><!-- end container --.
+        </section>
+        <!--  END Articles  -->
+
+    </div>
+    <!--  END Page Content  -->
+
+{% endblock %}

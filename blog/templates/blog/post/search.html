@@ -1,0 +1,77 @@
+{% extends "base_nav.html" %}
+{% load static %}
+{% load blog_tags %}
+{% block title %}Search Webfairy Blog{% endblock %}
+
+{% block content %}
+
+    <!--  Page Header  -->
+    <!--  class: image, round, hfixedlg, hfixedmd, hfixedsm  -->
+    <div class="page-header--image" data-overlay>
+        <div class="imagebg" style="background-image: url({% static 'blog/img/pageheader-blog@2x.jpg' %});"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="sectiontitle-element--light--center">
+                        <h1>Search the Webfairy Blog</h1>
+                        <p>...searching {% total_posts %} posts...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  END Page Header  -->
+
+            <!--  Page Content  -->
+    <div class="page-content" data-padding="top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-9">
+                    <section data-padding="bottom">
+
+                        {% if query %}
+                            <h2>Posts containing "{{ query }}"</h2>
+                            <br><br>
+                            <h3>
+                                {% with results.count as total_results %}
+                                  Found {{ total_results }} result{{ total_results|pluralize }}
+                                {% endwith %}
+                            </h3>
+                            <br><br>
+                            {% for post in results %}
+                                <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                                {{ post.body|markdown|truncatewords_html:5 }}
+                                <br><br>
+                            {% empty %}
+                              <p>There are no results for your query.</p>
+                              <br><br>
+                            {% endfor %}
+                            <div class="wrapper">
+                                 <a href="{% url "blog:post_search" %}" class="btn--big--colortwo--round">Search Again</a>
+                            </div>
+                          {% else %}
+                            <h2>Search for posts:</h2>
+
+                            <div class="search-form--icon--v2--colorone--round" data-padding="xsbottom">
+                                <form method="get">
+                                    <div class="basic-form--border--round--row">
+                                    {% for field in form %}
+                                        <div class="field col-lg-12" style="margin-bottom:20px;">
+                                            {{ field.errors }}
+                                            {{ field.label_tag }} {{ field }}
+                                        </div>
+                                    {% endfor %}
+                                    </div>
+                                  {% csrf_token %}
+                                  <input style="background-color:#3C4AED;color:white;font-weight:900;" type="submit" value="Search">
+                                </form>
+                            </div>
+                        {% endif %}
+
+                    </section> <!-- data padding -->
+                </div> <!-- class col-12 col-md-8 -->
+            <!-- end row -->
+        </div> <!-- end container -->
+    </div> <!-- end page-content -->
+{% endblock %}
+

@@ -1,0 +1,212 @@
+{% extends "base_nav.html" %}
+{% load static %}
+{% block title %}Webfairy Design Using the Django Web Framework{% endblock %}
+
+{% block content %}
+
+        <!--  Page Header  -->
+        <!--  class: image, round, hfixedlg, hfixedmd, hfixedsm  -->
+        <div class="page-header--agency" data-padding data-bg="template">
+            <div class="container">
+                <div class="row align-items-md-center">
+                    <div class="col-12 col-md-6 col-xl-5">
+                        <div class="sectiontitle-element--light">
+                            <h4>Let the Webfairy do it...</h4><br>
+                            <h1 class="big">Making <em class="underline--colortwo">magic</em> for online business</h1>
+                            <!-- <p>Secure. High Searchability. Brilliant Design.<br>Easy for YOU. Personal Touch.</p> -->
+                            <p>Full-Stack Django Web Development Services by <a style="color:White;" href="https://www.marcisprouse.com">Marci Sprouse</a></p>
+                            <p>Brilliant, secure sites with high searchability<br>-- making it easy for you -- like magic!</p>
+                            <a href="https://www.webfairydesign.com/blog/2021/5/18/webfairy-design-re-opening/" class="btn--big--icon--light--primary--shadow--round">More info<i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-6 offset-xl-1">
+                        <div class="square-element">
+                            <div class="info">
+                                <div class="image">
+                                    <img data-unveil src="#" data-src="{% static 'pages/img/pageheader-agency.png' %}" data-src-retina="{% static 'pages/img/pageheader-agency@2x.png' %}" alt="">
+                                </div>
+                            </div>
+                            <!-- <div class="info">
+                                <div class="image">
+                                    <img src="{% static 'pages/img/pageheader-agency.png' %}" alt=""> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  END Page Header  -->
+
+        <!--  Page Content  -->
+        <div class="page-content">
+            <!--  Icon Section  -->
+            <section data-padding>
+                <div class="container">
+                    <div data-aos="fade-up" class="row" data-padding="xstop">
+                        <div class="col-12">
+                            <div class="sectiontitle-element--inline">
+                                <div class="wrapper">
+                                    <span class="toptitle--line--primary">Our Services</span>
+                                    <h2><span>Find out what</span><span><em>the Webfairy can do</em> for you</span></h2>
+                                </div>
+                                <div class="wrapper">
+                                    <a href="{% url 'pages:about' %}" class="btn--big--icon--round--colortwo--alt"><span>View All</span><i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-padding="smtop">
+                        <div data-aos="fade-up" data-aos-delay="100" class="col-12 col-md-4">
+                            <div class="icon-element--box--round--shadow--colorone">
+                                <div class="info">
+                                    <div class="icon--shadow--light"><i class="feather icon-edit-2"></i></div>
+                                    <div class="text">
+                                        <h6>Branding</h6>
+                                        <p>The Webfairy can create and incorporate your personal or business branding into your online presence. Need a logo?  No problem.  We can do it. Viewers will remember you with Webfairy Design.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-aos="fade-up" data-aos-delay="200" class="col-12 col-md-4">
+                            <div class="icon-element--box--round--shadow--colorone">
+                                <div class="info">
+                                    <div class="icon--shadow--light"><i class="feather icon-layout"></i></div>
+                                    <div class="text">
+                                        <h6>Design</h6>
+                                        <p>Modern, responsive site designs that work across devices is our specialty.  The Webfairy will get to know your preferences and build a site you and your viewers will love!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-aos="fade-up" data-aos-delay="300" class="col-12 col-md-4">
+                            <div class="icon-element--box--round--shadow--colorone">
+                                <div class="info">
+                                    <div class="icon--shadow--light"><i class="feather icon-code"></i></div>
+                                    <div class="text">
+                                        <h6>Development</h6>
+                                        <p>Specializing in the Django Web Framework, sites built by Webfairy Design are secure with the power of a database back end, allowing for unique user experiences and features.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--  END Icon Section  -->
+            <!--  Image Text  -->
+            <section data-padding data-bg="grey">
+                <div class="container">
+                    <div class="row align-items-lg-center">
+                        <div data-aos="fade" class="col-12 col-lg-6">
+                            <div class="sectiontitle-element">
+                                <span class="toptitle--line--primary">About Webfairy Design</span>
+                                <h2>We equip <em>growing companies</em> with outstanding digital products and experiences</h2>
+                                <p>Your online impression makes a difference.  Webfairy Design understands the importance of bringing viewers back to your site over and over again. We know what brings people back and keeps them engaged.</p>
+                                <a href="{% url 'pages:about' %}" class="btn--big--icon--round--colortwo--alt"><span>Read More</span><i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                        <div data-aos="zoom-in" data-aos-delay="200" class="col-12 col-lg-6">
+                            <div class="square-element">
+                                <div class="info">
+                                    <div class="image">
+                                        <img data-unveil src="#" data-src="{% static 'pages/img/aboutus-agency.png' %}" data-src-retina="{% static 'pages/img/aboutus-agency@2x.png' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--  END Image Text  -->
+            <!--  Description  -->
+            <section data-padding="top">
+                <div class="container">
+                    <div class="row">
+                        <div data-aos="fade-up" data-aos-delay="100" class="col-12 col-md-4">
+                            <div class="icon-element--round--left--colorone">
+                                <div class="info">
+                                    <div class="icon--shadow">
+                                        <span class="light">1</span>
+                                    </div>
+                                    <div class="text">
+                                        <h6>Our Mission</h6>
+                                    </div>
+                                    <div class="description">
+                                        <p><em>Making magic for online business</em> has been Webfairy Design's mission since 2002. Re-Opening this year, Webfairy Design has kept up-to-date on the latest trends in Web site development -- part of the magic in delivering the best!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-aos="fade-up" data-aos-delay="200" class="col-12 col-md-4">
+                            <div class="icon-element--round--left--colorone">
+                                <div class="info">
+                                    <div class="icon--shadow">
+                                        <span class="light">2</span>
+                                    </div>
+                                    <div class="text">
+                                        <h6>Our Vision</h6>
+                                    </div>
+                                    <div class="description">
+                                        <p>Helping our customers attain their vision is our vision. We specialize in creating brilliant and memorable sites that are forward-thinking in both design and development. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-aos="fade-up" data-aos-delay="300" class="col-12 col-md-4">
+                            <div class="icon-element--round--left--colorone">
+                                <div class="info">
+                                    <div class="icon--shadow">
+                                        <span class="light">3</span>
+                                    </div>
+                                    <div class="text">
+                                        <h6>Our Values</h6>
+                                    </div>
+                                    <div class="description">
+                                        <p>The Webfairy appreciates and understands the financial investment businesses have to make to have a viable and competitive online presence. Customer service with integrity is the Webfairy Design priority.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!--  END Description  -->
+            <!--  Full Width Section  -->
+            <section class="fullrow-element--image" data-margin="xstop" data-bg="grey">
+                <div class="image" style="background-image: url({% static 'pages/img/testimonial-agency@2x.jpg' %});"></div>
+                <div class="main-wrapper">
+                    <div class="inner-wrapper" data-padding="xs">
+                        <div data-aos="fade" class="icon-element--testimonial">
+                            <div class="info">
+                                <div class="text">
+                                    <p><em>Webfairy Design has the magic potion that combines brilliant design and secure development, edging your site above the rest.</em><br><br>Is your site out-dated or no longer effective?<br><br>Contact the Webfairy today.  Your modern site will appear like magic!
+                                    <br><br><a href="{% url 'contact_form:contact' %}" class="btn--big--colortwo--round">Contact the Webfairy</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--  END Full Width Section  -->
+
+            <!--  CTA Box  -->
+            <section class="ctabox-element--center--light" data-aos="fade" data-padding="xstop" data-bg="template" style="margin-top:-15px;">
+                <div class="container">
+                    <div class="row" data-padding="xs">
+                        <div class="col-12">
+                            <div class="text">
+                                <h2>The Webfairy will create your site!</h2>
+                                <p>Ask us how we can help today.</p>
+                                <a href="{% url 'contact_form:contact' %}" class="btn--big--light--primary--round" target="_self">Contact Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--  END CTA Box  -->
+        </div> <!--  END Page Content  -->
+
+{% endblock %}

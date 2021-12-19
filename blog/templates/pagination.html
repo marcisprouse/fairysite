@@ -1,0 +1,37 @@
+<!--  Pagination  -->
+<section data-padding="bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="navigation-element--pagination">
+                    <div class="navigation">
+                        <div class="wrapper">
+                            {% if page.has_previous %}
+                            <a href="?page={{ page.previous_page_number }}" class="btn--big--nav--colorone--round">
+                                <i class="feather icon-arrow-left"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                        <div class="wrapper--numbers--round">
+                            {% if page.has_previous %}
+                            <a href="?page={{ page.previous_page_number }}">{{ page.previous_page_number }}</a>
+                            {% endif %}
+                            <a href="#" class="active">{{ page.number }}</a>
+                            {% if page.has_next %}
+                            <a href="?page={{ page.next_page_number }}">{{ page.next_page_number }}</a>
+                            {% endif %}
+                        </div>
+                        <div class="wrapper">
+                            {% if page.has_next %}
+                            <a href="?page={{ page.next_page_number }}" class="btn--big--nav--colorone--round">
+                                <i class="feather icon-arrow-right"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--  END Pagination  -->

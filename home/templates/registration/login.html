@@ -1,0 +1,47 @@
+{% extends "base_nav.html" %}
+{% load static %}
+{% block title %}Login: Webfairy Design{% endblock %}
+
+{% block content %}
+
+        <div class="page-header--image" data-overlay>
+            <div class="imagebg" style="background-image: url({% static 'pages/img/login-header@2x.jpg' %});"></div>
+            <div class="container">
+                <div class="row justify-content-center">
+
+                        <!-- <div class="col-12 col-lg-8 offset-lg-2"> -->
+                        <div class="col-12 col-lg-8">
+
+                            <div class="icon-element--box--round--shadow--colorone" style="text-align:center;background:white;">
+
+                                <h4>Login</h4>
+                                <br><br>
+                                {% if form.errors %}
+                                  <p>Your username and password didn't match. Please try again.</p>
+                                {% endif %}
+                                {% load crispy_forms_tags %}
+                                <form method="post" action="{% url 'login' %}">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <input type="submit" class="btn btn-primary" value="Login">
+                                <input type="hidden" name="next" value="{{ next }}">
+                                </form>
+                                <br><br>
+                                <h4>or</h4>
+                                <br><br>
+                                <a href="{% url 'social:begin' 'google-oauth2' %}">
+                                    <img src="{% static 'pages/img/btn_google_signin_light_normal_web.png' %}" class="btn-google"></a>
+                                    <!-- <button class="btn-google"></button></a> -->
+
+
+                            </div><!-- end of card -->
+
+
+                        </div>
+
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

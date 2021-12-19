@@ -1,0 +1,133 @@
+{% extends "base_nav.html" %}
+{% load static %}
+{% block title %}Portfolio: Webfairy Design{% endblock %}
+
+{% block content %}
+
+    <!--  Page Header  -->
+    <!--  class: image, round, hfixedlg, hfixedmd, hfixedsm  -->
+    <div class="page-header--image" data-overlay>
+        <div class="imagebg" style="background-image: url({% static 'pages/img/pageheader-portfolio.jpg' %});"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="sectiontitle-element--light--center">
+                        <h1>Portfolio</h1>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  END Page Header  -->
+    <!--  Page Content  -->
+    <div class="page-content">
+        <section data-padding="top">
+            <div class="container">
+                <div class="row justify-content-center" data-padding="xsbottom">
+                    <div class="col-12 col-lg-7">
+                        <div class="justify-content-center" data-aos="fade" data-aos-delay="200" data-isotope-filters>
+                            <ul>
+                                <li data-filter="*" class="is-checked">All</li>
+                                <li data-filter=".design">Design</li>
+                                <li data-filter=".branding">Branding</li>
+                                <li data-filter=".development">Development</li>
+                                <li data-filter=".digital">Digital</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section data-padding="bottom" data-isotope="load-simple" data-isotope-columns="three">
+            <div class="container">
+                <div class="row">
+                    <!--  Single Project  -->
+                    <div class="square-element--project--overlay branding">
+                        <div class="info">
+                            <div class="image">
+                                <img data-unveil src="#" data-src="assets/img/case-1.jpg" data-src-retina="assets/img/case-1@2x.jpg" alt="">
+                                <div class="icon--tr--square--secondary"><i class="feather icon-plus"></i></div>
+                                <div class="meta">
+                                    <h6></h6>
+                                    <p>Branding</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="link"></a>
+                    </div>
+                    <!--  END Single Project  -->
+                    <div class="square-element--project--overlay design">
+                        <div class="info">
+                            <div class="image">
+                                <img data-unveil src="#" data-src="assets/img/case-2.jpg" data-src-retina="assets/img/case-2@2x.jpg" alt="">
+                                <div class="icon--tr--square--secondary"><i class="feather icon-plus"></i></div>
+                                <div class="meta">
+                                    <h6></h6>
+                                    <p>Design</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="link"></a>
+                    </div>
+                    <div class="square-element--project--overlay development">
+                        <div class="info">
+                            <div class="image">
+                                <img data-unveil src="#" data-src="assets/img/case-3.jpg" data-src-retina="assets/img/case-3@2x.jpg" alt="">
+                                <div class="icon--tr--square--secondary"><i class="feather icon-plus"></i></div>
+                                <div class="meta">
+                                    <h6></h6>
+                                    <p>Development</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="link"></a>
+                    </div>
+                    <div class="square-element--project--overlay branding">
+                        <div class="info">
+                            <div class="image">
+                                <img data-unveil src="#" data-src="assets/img/case-4.jpg" data-src-retina="assets/img/case-4@2x.jpg" alt="">
+                                <div class="icon--tr--square--secondary"><i class="feather icon-plus"></i></div>
+                                <div class="meta">
+                                    <h6></h6>
+                                    <p>Branding</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="link"></a>
+                    </div>
+                    <div class="square-element--project--overlay design">
+                        <div class="info">
+                            <div class="image">
+                                <img data-unveil src="#" data-src="assets/img/case-5.jpg" data-src-retina="assets/img/case-5@2x.jpg" alt="">
+                                <div class="icon--tr--square--secondary"><i class="feather icon-plus"></i></div>
+                                <div class="meta">
+                                    <h6></h6>
+                                    <p>Design</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="link"></a>
+                    </div>
+                    <div class="square-element--project--overlay digital">
+                        <div class="info">
+                            <div class="image">
+                                <img data-unveil src="#" data-src="assets/img/case-6.jpg" data-src-retina="assets/img/case-6@2x.jpg" alt="">
+                                <div class="icon--tr--square--secondary"><i class="feather icon-plus"></i></div>
+                                <div class="meta">
+                                    <h6></h6>
+                                    <p>Digital</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="link"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--  END Page Content  -->
+
+
+
+{% endblock %}

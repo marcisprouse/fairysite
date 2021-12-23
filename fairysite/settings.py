@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 SITE_ID = 1
 
@@ -39,6 +39,11 @@ ALLOWED_HOSTS = [env('SITE_ALLOWED_HOSTS')]
 INSTALLED_APPS = [
     # installed using startapp function
     'account.apps.AccountConfig',
+    'pages.apps.PagesConfig',
+    'home.apps.HomeConfig',
+    'blog.apps.BlogConfig',
+    'event_tracker.apps.EventTrackerConfig',
+    'contact_form',
     # already set up
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,17 +51,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # installed using startapp function
-    'pages.apps.PagesConfig',
-    'home.apps.HomeConfig',
-    'blog.apps.BlogConfig',
-    'contact_form',
     # installed using pip
     'social_django',
     'crispy_forms',
     'taggit',
     'django.contrib.postgres',
     'django_extensions',
+    'analytical',
+    'rest_framework',
+    'rest_framework.authtoken',
     # alreaady a part of base, but need to activate here
     'django.contrib.sites',
     'django.contrib.sitemaps',
@@ -101,6 +104,12 @@ WSGI_APPLICATION = 'fairysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # <-- And here
+    ],
+}
 
 DATABASES = {
     'default': {
@@ -153,8 +162,6 @@ DATE_INPUT_FORMATS = ['%m-%d-%Y']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
 MEDIA_ROOT = '/home/webfairy/fairysite/media'
@@ -188,6 +195,9 @@ AUTHENTICATION_BACKENDS = (
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+CLICKY_SITE_ID = env('SITE_CLICKY_SITE_ID')
+GOOGLE_ANALYTICS_GTAG_PROPERTY_ID = env('SITE_GOOGLE_ANALYTICS_GTAG_PROPERTY_ID')
 
 
 

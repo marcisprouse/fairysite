@@ -10,6 +10,8 @@ from .forms import EmailPostForm, CommentForm, SearchForm
 from django.core.mail import send_mail
 from taggit.models import Tag
 
+from event_tracker.signals import post_viewed_signal
+
 
 
 def post_list(request, tag_slug=None):
@@ -44,6 +46,8 @@ def post_detail(request, year, month, day, post):
                                    publish__year=year,
                                    publish__month=month,
                                    publish__day=day)
+
+    post_viewed_signal.send(post.__class__, post=post, request=request)
 
     # List of active comments for this post
     comments = post.comments.filter(active=True)

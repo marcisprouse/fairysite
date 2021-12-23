@@ -18,6 +18,11 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import PostSitemap, StaticSitemap
+from rest_framework import routers
+from event_tracker import views
+
+router = routers.DefaultRouter()
+router.register(r'event', views.EventViewSet)
 
 sitemaps = {
     'posts': PostSitemap,
@@ -33,7 +38,9 @@ urlpatterns = [
     path('', include('contact_form.urls')),
     path('blog/', include('blog.urls', namespace='blog')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-         name='django.contrib.sitemaps.views.sitemap')
+         name='django.contrib.sitemaps.views.sitemap'),
+    path('api', include(router.urls)),
+    path('api/api-auth/', include('rest_framework.urls'))
 ]
 
 admin.site.site_header = "Webfairy Design Admin Panel"

@@ -1,8 +1,14 @@
 {% load static %}
+{% load google_analytics_gtag %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
+    <script async src="//static.getclicky.com/101347092.js"></script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101347092ns.gif" /></p></noscript>
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no" />
@@ -30,8 +36,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'pages/css/bootstrap/bootstrap-reboot.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'pages/css/style.css' %}">
     {% block head %} {% endblock %}
+    {% google_analytics_gtag %}
 </head>
 <body>
+
     <!--  Main Wrap  -->
     <div id="main-wrap">
         {% block navbar %}
@@ -134,6 +142,8 @@
                     <div class="col-12">
                         <p>©2021 <a href="https://www.webfairydesign.com/" class="simple">Webfairy Design</a> by <a href="https://www.marcisprouse.com/" class="simple">Marci Sprouse</a>&nbsp&nbsp
                         <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangosite100x25.gif" border="0" alt="A Django site." title="A Django site." /></a></p>
+                        <script async src="//static.getclicky.com/101347092.js"></script>
+                        <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101347092ns.gif" /></p></noscript>
                     </div>
                 </div>
             </div>
@@ -157,7 +167,6 @@
     <script type="text/javascript" src="{% static 'pages/js/elements.js' %}"></script>
     <script type="text/javascript" src="{% static 'pages/js/masonry.js' %}"></script>
     <script type="text/javascript" src="{% static 'pages/js/form.js' %}"></script>
-
 </body>
 </html>
 
